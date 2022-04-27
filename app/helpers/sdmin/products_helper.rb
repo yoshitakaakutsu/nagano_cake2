@@ -1,0 +1,2 @@
+module Sdmin::ProductsHelper
+end

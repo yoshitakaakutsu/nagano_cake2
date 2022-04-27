@@ -1,0 +1,15 @@
+<%= render 'public/header' %>
+
+<%= image_tag @product.image %>
+
+
+<%= @product.name %>
+<%= @product.introduction %>
+<p>¥<%= @product.price %>（税込み）</p>
+
+<p>数量を選択してください</p>
+ <%= form_with model: @cart_item, url: cart_items_create_path, method: :post do |f| %>
+   <%= f.hidden_field :product_id, :value => @product.id %>
+   <%= f.select :amount, *[1..10] %>
+   <%= f.submit "カートに入れる" %>
+ <% end %>

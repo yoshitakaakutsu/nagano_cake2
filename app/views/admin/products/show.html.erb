@@ -1,0 +1,20 @@
+<h2>商品詳細</h2>
+
+<%= image_tag @product.image %>
+
+<h4>商品名</h4>
+<%= @product.name %>
+
+<h4>商品説明</h4>
+<%= @product.introduction %>
+
+<h4>ジャンル</h4>
+<%= @product.genre.name %>
+
+<h4>税込価格</h4>
+<%= @product.price %>
+
+<h4>販売ステータス</h4>
+<%= @product.is_active %>
+
+<%= link_to "編集する", products_edit_path %>
