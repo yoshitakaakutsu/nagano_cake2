@@ -1,10 +1,23 @@
 <%= render 'public/header' %>
 
-<p>
-  ようこそながのCAKEへ！</br>
-  このサイトは、ケーキ販売のECサイトになります。</br>
-  会員でない方も商品の閲覧はできますが、</br>
-  購入には館員登録が必要になります。
-</p>
 
-<h2>新着商品</h2>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+    <p>
+      ようこそながのCAKEへ！</br>
+      このサイトは、ケーキ販売のECサイトになります。</br>
+      会員でない方も商品の閲覧はできますが、</br>
+      購入には館員登録が必要になります。
+    </p>
+
+    <h2>新着商品</h2>
+      <%= @product.each.with_index(1) do |product| %>
+        <%= image_tag product.image %>
+        <%= product.name %>
+        ¥<%= product.price %>
+      <% end %>
+      <%= link_to "全ての商品を見る>", items_index_path %>
+    </div>
+  </div>
+</div>

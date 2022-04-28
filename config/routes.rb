@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   get "cart_items" => "public/cart_items#index", as: "cart_item_index"
   patch "cart_items/:id" => "public/cart_items#update", as: "cart_items_update"
   delete "cart_items/:id" => "public/cart_items#destroy", as: "cart_items_destroy"
-  delete "cart_items/all_destroy" => "public/cart_items#all_destroy"
+  delete "cart_items/all_destroy" => "public/cart_items#all_destroy", as: "cart_items_all_destroy"
   post "cart_items" => "public/cart_items#create", as: "cart_items_create"
 
   get "orders/new" => "public/orders#new", as: "orders_new"

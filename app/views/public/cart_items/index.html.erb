@@ -2,6 +2,9 @@
 
 <h2>ショッピングカート</h2>
 
+<%= link_to 'カートを空にする', cart_items_all_destroy_path, method: :delete %>
+
+<% @cart_item.each do |cart_item| %>
 <table>
   <thead>
     <tr>
@@ -13,18 +16,28 @@
     </tr>
   </thead>
   <tbody>
-    <% @cart_item.each do |cart_item| %>
+
     <tr>
       <td><%= cart_item.product.name %></td>
       <td><%= cart_item.product.with_tax_price %></td>
       <td><%= cart_item.amount %></td>
       <td><%= cart_item.subtotal %></td>
+      <td><%= link_to '削除する', cart_items_destroy_path(@cart_item.ids), method: :delete %></td>
     </tr>
-    <% end %>
+
   </tbody>
 </table>
 
 <%= link_to "買い物を続ける", items_index_path %>
+
+<table>
+  <tr>
+    <th>合計金額</th>
+    <td></td>
+  </tr>
+</table>
+<% end %>
+
 
 <%= link_to "情報入力に進む", orders_new_path %>
 
