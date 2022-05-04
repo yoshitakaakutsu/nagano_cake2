@@ -1,25 +1,31 @@
 <%= render 'public/header' %>
 
-<h2>配送先編集</h2>
 
-<%= form_with model: @adressurl, url: update_adress_path, method: :patch do |f| %>
+<div class=container>
+  <h3 class="ml-5 mt-3 mb-5 bg-light pl-2 pr-2 pt-2">配送先編集</h3>
 
-  <div class="field">
-    <%= f.label :郵便番号（ハイフンなし） %><br />
-    <%= f.text_field :postal_code %>
-  </div>
+  <%= form_with model: @adressurl, url: update_adress_path, method: :patch do |f| %>
+  <form class="form-horizontal">
+    <div class="field form-group">
+      <%= f.label :郵便番号（ハイフンなし）, class: "col-md-3 col-form-label" %>
+      <%= f.text_field :postal_code %>
+    </div>
 
-  <div class="field">
-    <%= f.label :住所 %><br />
-    <%= f.text_field :adress %>
-  </div>
+    <div class="field form-group">
+      <%= f.label :住所, class: "col-md-3 col-form-label"  %>
+      <%= f.text_field :adress %>
+    </div>
 
-  <div class="field">
-    <%= f.label :氏名 %><br />
-    <%= f.text_field :name %>
-  </div>
+    <div class="field form-group">
+      <%= f.label :氏名, class: "col-md-3 col-form-label"  %>
+      <%= f.text_field :name %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "編集内容を保存" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+    </div>
+
+  </form>
+  <% end %>
+
+</div>

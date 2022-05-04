@@ -1,15 +1,28 @@
 <%= render 'public/header' %>
 
-<%= image_tag @product.image %>
 
+<div class="container">
 
-<%= @product.name %>
-<%= @product.introduction %>
-<p>¥<%= @product.price %>（税込み）</p>
+ <div class="row">
+  <%= image_tag @product.image, size:"400x300" %>
 
-<p>数量を選択してください</p>
- <%= form_with model: @cart_item, url: cart_items_create_path, method: :post do |f| %>
+<div class="d-flex flex-column bd-highlight mb-3">
+  <h4 class="mt-5">
+    <strong><%= @product.name %></strong>
+  </h4>
+  <div class="mt-5">
+    <%= @product.introduction %></br>
+  </div>
+  <div class="mt-5">
+    <strong>¥<%= @product.price %></strong>（税込）</br>
+  </div>
+  <div class="mt-5">
+  <%= form_with model: @cart_item, url: cart_items_create_path, method: :post do |f| %>
    <%= f.hidden_field :product_id, :value => @product.id %>
-   <%= f.select :amount, *[1..10] %>
-   <%= f.submit "カートに入れる" %>
- <% end %>
+   <%= f.select :amount, *[1..10], include_blank: "個数選択", class: "mr-4" %>
+   <%= f.submit "カートに入れる", class: "btn btn-success ml-5" %>
+   </div>
+  <% end %>
+  </div>
+ </div>
+</div>

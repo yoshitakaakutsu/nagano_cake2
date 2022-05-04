@@ -17,10 +17,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order = Order.all
+    @order = current_customer.orders.all
   end
 
   def show
+    
   end
 
   def order_params

@@ -1,43 +1,52 @@
 <%= render 'public/header' %>
 
-<h2>ショッピングカート</h2>
+<div class="container">
+  <div class="row">
+    <h3 class="mt-3 mb-5 bg-light pl-2 pr-2 pt-2">ショッピングカート</h3>
+      <div class="text-right">
+      <%= link_to 'カートを空にする', cart_items_all_destroy_path, method: :delete,class: "btn btn-danger mt-3 mb-5 pl-2 pr-2 pt-2" %>
+      </div>
+  </div>
+</div>
 
-<%= link_to 'カートを空にする', cart_items_all_destroy_path, method: :delete %>
+<div class="container">
+  <table class="table table-bordered">
+  <% @cart_item.each do |cart_item| %>
+    <thead>
+      <tr>
+        <th class="table-secondary">商品名</th>
+        <th class="table-secondary">単価（税込）</th>
+        <th class="table-secondary">数量</th>
+        <th class="table-secondary">小計</th>
+        <th class="table-secondary" colspan="２"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= cart_item.product.name %></td>
+        <td><%= cart_item.product.with_tax_price %></td>
+        <td><%= cart_item.amount %></td>
+        <td><%= cart_item.subtotal %></td>
+        <td><%= link_to '削除する', cart_items_destroy_path(@cart_item.ids), method: :delete,class: "btn btn-danger" %></td>
+      </tr>
+    </tbody>
+  </table>
 
-<% @cart_item.each do |cart_item| %>
-<table>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>単価（税込）</th>
-      <th>数量</th>
-      <th>小計</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-      <td><%= cart_item.product.name %></td>
-      <td><%= cart_item.product.with_tax_price %></td>
-      <td><%= cart_item.amount %></td>
-      <td><%= cart_item.subtotal %></td>
-      <td><%= link_to '削除する', cart_items_destroy_path(@cart_item.ids), method: :delete %></td>
-    </tr>
-
-  </tbody>
-</table>
-
-<%= link_to "買い物を続ける", items_index_path %>
-
-<table>
-  <tr>
-    <th>合計金額</th>
-    <td></td>
-  </tr>
-</table>
-<% end %>
+  <div class="row">
+  <%= link_to "買い物を続ける", items_index_path, class: "btn btn-primary" %>
 
 
-<%= link_to "情報入力に進む", orders_new_path %>
+    <table class="table table-bordered">
+      <tr>
+        <th class="table-secondary">合計金額</th>
+        <td>¥<%= @total.round.to_s(:delimited)%></td>
+      </tr>
+    </table>
+  <% end %>
+  </div>
+
+
+<%= link_to "情報入力に進む", orders_new_path, class: "btn btn-success" %>
+
+</div>
 

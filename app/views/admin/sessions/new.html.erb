@@ -1,20 +1,28 @@
-<h2>管理者ログイン</h2>
+<%= render 'admin/header' %>
+
+
+<div class="container">
+<h3 class="ml-4 mt-3 mb-5 bg-light pl-2 pr-2 pt-2">管理者ログイン</h3>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
+<form class="form-horizontal">
+  <div class="field form-group ml-5">
+    <%= f.label :メールアドレス, class: "col-md-3 col-form-label" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
-    <%= f.label :パスワード %><br />
+  <div class="field form-group ml-5">
+    <%= f.label :パスワード, class: "col-md-3 col-form-label" %>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+  <div class="actions form-group ml-5">
+    <%= f.submit "ログイン", class: "col-md-3 btn btn-primary" %>
   </div>
+</form>
 <% end %>
+
+</div>
 
 <%= render "admin/shared/links" %>

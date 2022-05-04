@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+  devise_for :admin, skip: [:passwords], controllers: {
+  registrations: "admin/registrations",
   sessions: "admin/sessions"
 }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
   patch "admin/genres/:id" => "admin/genres#update", as: "update_genere"
 
   get "admin/products" => "admin/products#index", as: "products"
-  get "admin/products/new" => "admin/products#new"
+  get "admin/products/new" => "admin/products#new", as: "admin_products_new"
   post "admin/products" => "admin/products#create"
   get "admin/products/:id" => "admin/products#show", as: "products_show"
   get "admin/products/:id/edit" => "admin/products#edit", as: "products_edit"
@@ -31,6 +32,8 @@ Rails.application.routes.draw do
   get "admin/customers/:id" => "admin/customers#show", as: "admin_customers_show"
   get "admin/customers/:id/edit" => "admin/customers#edit", as: "admin_customers_edit"
   patch "admin/customers/:id" => "admin/customers#update", as: "update_admin_customers"
+
+  get "admin" => "admin/homes#index", as: "admin_homes"
 
   get "customer" => "public/customers#show", as: "customers_show"
   get "customer/edit" => "public/customers#edit", as: "customer_edit"
@@ -54,8 +57,8 @@ Rails.application.routes.draw do
   post "cart_items" => "public/cart_items#create", as: "cart_items_create"
 
   get "orders/new" => "public/orders#new", as: "orders_new"
-  post "orders/confirm" => "public/orders#confirm", as: "order_confirm"
-  get "order/complete" => "public/orders#complete", as: "order_complete"
+  get "orders/confirm" => "public/orders#confirm", as: "order_confirm"
+  get "orders/complete" => "public/orders#complete", as: "order_complete"
   post "orders" => "public/orders#create", as: "order_creat"
   get "orders" => "public/orders#index", as: "order_index"
   get "orders/:id" => "public/orders#show", as: "order_show"

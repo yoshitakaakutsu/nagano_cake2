@@ -2,8 +2,12 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def after_sign_in_path_for(resource)
+  def after_customer_sign_in_path_for(resource)
     items_index_path
+  end
+
+  def after_admin_sign_in_path_for(resource)
+    genres_path
   end
 
   def after_sign_out_path_for(resource)

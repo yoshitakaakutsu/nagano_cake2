@@ -1,27 +1,42 @@
 <%= render 'public/header' %>
 
-<h2>ログイン</h2>
 
-<h4>会員の方はこちらからログイン</h4>
+<div class="container">
+  <div class="ml-4 mt-3 mb-5 bg-light pl-2 pr-2 pt-2">
+    <h3>ログイン</h3>
+  </div>
+
+  <div class="ml-5 mt-3 mb-5 bg-light pl-2 pr-2 pt-2">
+    <h4>会員の方はこちらからログイン</h4>
+  </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
+
+<form class="form-horizontal">
+  <div class="field form-group ml-5">
+    <%= f.label :メールアドレス, class: "col-md-3 col-form-label" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
-    <%= f.label :パスワード %><br />
+  <div class="field form-group ml-5">
+    <%= f.label :パスワード, class: "col-md-3 col-form-label" %>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
 
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+  <div class="actions form-group">
+    <%= f.submit "ログイン", class: "col-md-3 btn btn-primary" %>
   </div>
 <% end %>
+</form>
+</div>
 
 
-<h4>会員登録がお済みでない方</h4>
-<P><%= link_to "こちら",new_customer_registration_path %>から新規登録を行なってください</P>
+<div class="container">
+  <div class="ml-5 mt-3 mb-5 bg-light pl-2 pr-2 pt-2">
+    <h4>会員登録がお済みでない方</h4>
+  </div>
+  <P class="text-center"><%= link_to "こちら",new_customer_registration_path %>から新規登録を行なってください</P>
+</div>
+

@@ -1,16 +1,19 @@
 <%= render 'public/header' %>
 
-<h2>注文履歴一覧</h2>
+<div class="container">
 
-<table>
+
+  <h3 class="ml-5 mt-3 mb-5 bg-light pl-2 pr-2 pt-2">注文履歴一覧</h3>
+
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th>注文日</th>
-      <th>配送先</th>
-      <th>注文商品</th>
-      <th>支払金額</th>
-      <th>ステータス</th>
-      <th>注文詳細</th>
+      <th class="table-secondary">注文日</th>
+      <th class="table-secondary">配送先</th>
+      <th class="table-secondary">注文商品</th>
+      <th class="table-secondary">支払金額</th>
+      <th class="table-secondary">ステータス</th>
+      <th class="table-secondary">注文詳細</th>
     </tr>
   </thead>
 
@@ -24,7 +27,9 @@
       <td><%= order.item.name %></td>
       <td><%= order.total_payment %></td>
       <td></td>
-      <td><%= link_to "表示する", order_show_path(order.id) %>
+      <td><%= link_to "表示する", order_show_path(order.id), class: "btn btn-primary" %>
     <% end %>
   </tbody>
 </table>
+
+</div>

@@ -1,18 +1,21 @@
 <%= render 'public/header' %>
 
-<h2>商品一覧</h2>
+
+<div class="container">
+<h3>商品一覧</h3>
 
 
   <% @product.each do |product| %>
 
 
   <%= link_to items_show_path(@product.ids) do %>
-    <%= image_tag product.image %>
+    <%= image_tag product.image %></br>
   <% end %>
-  <%= product.name %>
-  <P>¥<%= product.price %></P>
+  <%= product.name %><br>
+  ¥<%= product.price %>
 <% end %>
 
+</div>
 
 
 
