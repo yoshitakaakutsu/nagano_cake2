@@ -3,45 +3,36 @@
 
 <div class="container">
 
-<h3 class="ml-5 mt-3 mb-5 bg-light pl-2 pr-2 pt-2">商品詳細</h3>
+<h3 class="ml-5 mt-3 mb-5 bg-light pl-2 pr-2 pt-2 col-2">商品詳細</h3>
 
   <div class="row">
     <%= image_tag @product.image, size:"400x300" %>
 
-
-    <div class="d-flex flex-column bd-highlight mb-3">
-
-      <div class="mb-4">
-        商品名
-        <div class="col-12">
-          <%= @product.name %></br>
-        </div>
-      </div>
-　　　<div class="mb-4">
-        商品説明
-        <div class="col-12">
-          <%= @product.introduction %></br>
-        </div>
-      </div>
-      <div class="mb-4">
-        ジャンル
-        <div class="col-12">
-          <%= @product.genre.name %></br>
-        </div>
-      </div>
-      <div class="mb-4">
-        販売価格</br>（税抜価格）
-        <div class="col-12">
-          <%= @product.with_tax_price.to_s(:delimited) %>(<%= @product.price.to_s(:delimited) %>)円</br>
-        </div>
-      </div>
-      <div class="mb-4">
-        販売ステータス
-        <div class="col-12">
-          <%= @product.is_active %>
-        </div>
-      </div>
-      <%= link_to "編集する", products_edit_path, class: "btn btn-success ml-5" %>
-    </div>
+    <table class="table table-borderless col-5">
+      <tr>
+        <th style="width: 40%">商品名</th>
+        <td><%= @product.name %></td>
+      </tr>
+      <tr>
+        <th>商品説明</th>
+        <td><%= @product.introduction %></td>
+      </tr>
+      <tr>
+        <th>ジャンル</th>
+        <td><%= @product.genre.name %></td>
+      </tr>
+      <tr>
+        <th>販売価格</br>（税抜価格）</th>
+        <td><%= @product.with_tax_price.to_s(:delimited) %>(<%= @product.price.to_s(:delimited) %>)円</td>
+      </tr>
+      <tr>
+        <th>販売ステータス</th>
+        <td><%= @product.is_active ? '販売中':'販売停止中' %></td>
+      </tr>
+    </table>
   </div>
+
+
+  <%= link_to "編集する", products_edit_path, class: "btn btn-success col-2 offset-md-4" %>
+
 </div>

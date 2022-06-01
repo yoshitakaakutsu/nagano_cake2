@@ -2,7 +2,7 @@
 
 
 <div class="container">
-  <div class="ml-4 mt-3 mb-5 bg-light pl-2 pr-2 pt-2">
+  <div class="ml-4 mt-3 mb-5 bg-light pl-2 pr-2 pt-2 col-2">
     <h3>ログイン</h3>
   </div>
 
@@ -14,19 +14,19 @@
 
 <form class="form-horizontal">
   <div class="field form-group ml-5">
-    <%= f.label :メールアドレス, class: "col-md-3 col-form-label" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :メールアドレス, class: "col-md-2 col-form-label" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-lg-5 ml-5" %>
   </div>
 
   <div class="field form-group ml-5">
-    <%= f.label :パスワード, class: "col-md-3 col-form-label" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.label :パスワード, class: "col-md-2 col-form-label" %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "col-lg-5 ml-5" %>
   </div>
 
 
 
   <div class="actions form-group">
-    <%= f.submit "ログイン", class: "col-md-3 btn btn-primary" %>
+    <%= f.submit "ログイン", class: "col-md-2 btn btn-primary offset-md-3" %>
   </div>
 <% end %>
 </form>
@@ -34,7 +34,7 @@
 
 
 <div class="container">
-  <div class="ml-5 mt-3 mb-5 bg-light pl-2 pr-2 pt-2">
+  <div class="ml-5 mt-5 mb-5 bg-light pl-2 pr-2 pt-2 col-4">
     <h4>会員登録がお済みでない方</h4>
   </div>
   <P class="text-center"><%= link_to "こちら",new_customer_registration_path %>から新規登録を行なってください</P>

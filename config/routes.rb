@@ -35,6 +35,11 @@ Rails.application.routes.draw do
 
   get "admin" => "admin/homes#index", as: "admin_homes"
 
+  get "admin/orders/:id" => "admin/orders#show", as: "admin_order"
+  patch "admin/orders/:id" => "admin/orders#update", as: "admin_order_update"
+  patch "admin/orders/:order_id/order_details/:id" => "admin/oder_details#update", as: "admin_order_details_update"
+
+
   get "customer" => "public/customers#show", as: "customers_show"
   get "customer/edit" => "public/customers#edit", as: "customer_edit"
   patch "customer" => "public/customers#update", as: "customer_update"
@@ -52,12 +57,12 @@ Rails.application.routes.draw do
 
   get "cart_items" => "public/cart_items#index", as: "cart_item_index"
   patch "cart_items/:id" => "public/cart_items#update", as: "cart_items_update"
-  delete "cart_items/:id" => "public/cart_items#destroy", as: "cart_items_destroy"
   delete "cart_items/all_destroy" => "public/cart_items#all_destroy", as: "cart_items_all_destroy"
+  delete "cart_items/:id" => "public/cart_items#destroy", as: "cart_items_destroy"
   post "cart_items" => "public/cart_items#create", as: "cart_items_create"
 
   get "orders/new" => "public/orders#new", as: "orders_new"
-  get "orders/confirm" => "public/orders#confirm", as: "order_confirm"
+  post "orders/confirm" => "public/orders#confirm", as: "order_confirm"
   get "orders/complete" => "public/orders#complete", as: "order_complete"
   post "orders" => "public/orders#create", as: "order_creat"
   get "orders" => "public/orders#index", as: "order_index"

@@ -2,23 +2,23 @@
 
 
 <div class="container">
-<h3 class="ml-4 mt-3 mb-5 bg-light pl-2 pr-2 pt-2">管理者ログイン</h3>
+<h3 class="ml-4 mt-3 mb-5 bg-light pl-2 pr-2 pt-2 col-3">管理者ログイン</h3>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <form class="form-horizontal">
   <div class="field form-group ml-5">
     <%= f.label :メールアドレス, class: "col-md-3 col-form-label" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-5" %>
   </div>
 
   <div class="field form-group ml-5">
     <%= f.label :パスワード, class: "col-md-3 col-form-label" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "col-5" %>
   </div>
 
 
   <div class="actions form-group ml-5">
-    <%= f.submit "ログイン", class: "col-md-3 btn btn-primary" %>
+    <%= f.submit "ログイン", class: "col-md-3 btn btn-primary offset-md-3 mt-4" %>
   </div>
 </form>
 <% end %>

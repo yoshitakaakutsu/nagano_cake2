@@ -3,9 +3,9 @@
 
 <div class="container">
   <div class="row">
-    <h3 class="ml-5 mt-3 mb-5 bg-light pl-2 pr-2 pt-2">商品一覧</h3>
+    <h3 class="ml-5 mt-3 mb-5 bg-light pl-2 pr-2 pt-2 col-2">商品一覧</h3>
     <%= link_to admin_products_new_path do %>
-      <button type="button" class="btn btn-primary rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+      <div type="button" class="btn btn-default rounded-circle shadow-sm offset-md-3 pt-2 mt-3" style="width:3rem;height:3rem; ">＋</div>
     <% end %>
   </div>
 
@@ -26,10 +26,18 @@
         <td><%= link_to product.name, products_show_path(product.id) %></td>
         <td><%= product.price.to_s(:delimited) %></td>
         <td><%= product.genre.name %></td>
-        <td><%= product.is_active %></td>
+        <td>
+          <%= product.is_active ? '販売中':'販売停止中' %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
 
+  <div class="col-md-10 offset-5">
+    <%= paginate @products %>
+  </div>
+
+
+
 </div>
+

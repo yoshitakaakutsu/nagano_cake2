@@ -2,18 +2,26 @@
 
 
 <div class="container">
-<h3>商品一覧</h3>
+  <h3 class="ml-5 mt-3 mb-5 bg-light pl-2 pr-2 pt-2 col-2">商品一覧</h3>
+
+    <div class="d-flex flex-wrap">
+    <% @product.each do |product| %>
+      <div class="contents__item ml-4 mt-3 mb-3">
+        <%= link_to items_show_path(product.id) do %>
+          <%= image_tag product.image, size:"250x180"  %></br>
+        <% end %>
+        <%= product.name %><br>
+        ¥<%= product.price.to_s(:delimited) %>
+      </div>
+    <% end %>
+
+    </div>
+
+    <div class="col-md-10 offset-5">
+      <%= paginate @product%>
+    </div>
 
 
-  <% @product.each do |product| %>
-
-
-  <%= link_to items_show_path(@product.ids) do %>
-    <%= image_tag product.image %></br>
-  <% end %>
-  <%= product.name %><br>
-  ¥<%= product.price %>
-<% end %>
 
 </div>
 

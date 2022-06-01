@@ -1,0 +1,42 @@
+<%= render 'admin/header' %>
+
+<div class="container">
+  <h3 class="ml-5 mt-3 mb-5 bg-light pl-2 pr-2 pt-2 col-2">注文履歴一覧</h3>
+
+  <table class="table col-10">
+  <thead>
+    <tr>
+      <th class="table-secondary" style="width: 25%">購入日時</th>
+      <th class="table-secondary">購入者</th>
+      <th class="table-secondary">注文個数</th>
+      <th class="table-secondary">注文ステータス</th>
+    </tr>
+  </thead>
+
+　<tbody>
+　　 <% @order.each do |order| %>
+      <tr>
+        <td>
+          <%= link_to admin_order_path(order.id) do %>
+            <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S')  %>
+          <% end %>
+        </td>
+        <td><%= order.name %></td>
+        <td>
+        <% @sum = 0 %>
+        <% order.oder_details.each do |order_detail| %>
+          <% @sum += order_detail.amount %>
+        <% end %>
+        <%= @sum %></td>
+        <td><%= order.status_i18n %></td>
+      </tr>
+    <% end %>
+    </tbody>
+    </table>
+
+
+    <div class="col-md-10 offset-5">
+      <%= paginate @order%>
+    </div>
+
+</div>

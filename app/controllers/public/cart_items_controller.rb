@@ -6,10 +6,6 @@ class Public::CartItemsController < ApplicationController
   end
 
   def edit
-
-  end
-
-  def update
   end
 
   def destroy
@@ -20,18 +16,29 @@ class Public::CartItemsController < ApplicationController
 
   def all_destroy
     cart_item = CartItem.all
-    current_user.cart_item.destroy_all
+    current_customer.cart_items.destroy_all
     redirect_to cart_item_index_path
   end
 
   def create
-    cart_item = CartItem.new(cart_item_params)
-    cart_item.customer_id = current_customer.id
-    cart_item.save!
-    redirect_to cart_item_index_path
-  end
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.customer_id = current_customer.id
+    if current_customer.cart_items.find_by(product_id: params[:cart_item][:product_id]).present?
+			cart_item = current_customer.cart_items.find_by(product_id: params[:cart_item][:product_id])
+			cart_item.amount += params[:cart_item][:amount].to_i
+			cart_item.save
+			redirect_to cart_item_index_path
+		else
+	    @cart_item.save
+			redirect_to cart_item_index_path
+		end
+	end
 
-  private
+	def update
+		cart_item = CartItem.find(params[:id])
+    cart_item.update(cart_item_params)
+    redirect_to cart_item_index_path
+	end
 
   private
   def cart_item_params
