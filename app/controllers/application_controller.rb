@@ -9,13 +9,18 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_homes_path
     when Customer
-      items_index_path
+      customers_show_path
     end
   end
 
 
   def after_sign_out_path_for(resource)
-    root_path
+    case resource
+    when :customer
+      root_path
+    when :admin
+      new_admin_session_path
+    end
   end
 
   protected

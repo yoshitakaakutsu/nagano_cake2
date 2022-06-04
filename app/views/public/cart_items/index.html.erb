@@ -50,7 +50,11 @@
   </div>
 
 
-<%= link_to "情報入力に進む", orders_new_path, class: "btn btn-success offset-md-5 mt-4" %>
+  <% if current_customer.cart_items.present? %>
+	  <% if current_customer.cart_items.present? %>
+	    <%= link_to "情報入力に進む", orders_new_path, class: "btn btn-success offset-md-5 mt-4" %>
+	  <% end %>
+  <% end %>
 
 </div>
 
