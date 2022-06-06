@@ -15,7 +15,9 @@
       <div class="d-flex flex-wrap">
         <% @product.each.with_index(1) do |product| %>
           <div class="contents__item">
-            <%= image_tag product.image, size:"250x180" %></br>
+            <%= link_to items_show_path(product.id) do %>
+              <%= image_tag product.image, size:"250x180"  %></br>
+            <% end %>
             <%= product.name %></br>
             ¥<%= product.price %>
           </div>
